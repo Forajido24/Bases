@@ -4,8 +4,8 @@
 session_start();
 
 // Destruir solo las variables de sesión específicas
-unset($_SESSION['id']);
-unset($_SESSION['nombre']);
+unset($_SESSION['idUser']);
+unset($_SESSION['nombreUser']);
 
 // Opcional: Puedes verificar si otras variables de sesión están activas o destruir la sesión si está completamente vacía
 if (empty($_SESSION)) {
@@ -13,6 +13,6 @@ if (empty($_SESSION)) {
 }
 
 // Redirigir al login después de cerrar sesión
-header("Location: index.php");
+header("Location: login.php");
 exit();
 ?>

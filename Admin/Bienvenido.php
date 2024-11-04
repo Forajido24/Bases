@@ -23,12 +23,14 @@ $nombreUsuario = $_SESSION['nombre'];
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
+            background-color: #f3f4f6;
         }
         header {
-            background-color: #20cbba;
+            background-color: #FF6900;
             color: #ffffff;
             text-align: center;
-            padding: 10px;
+            padding: 15px;
+            font-size: 16px;
         }
         td.apartado {
             background-color: #031d36;
@@ -76,6 +78,8 @@ $nombreUsuario = $_SESSION['nombre'];
             text-align: center;
             padding: 14px 16px;
             text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s;
         }
         nav a:hover {
             background-color: #ddd;
@@ -91,8 +95,8 @@ $nombreUsuario = $_SESSION['nombre'];
 
     <nav>
         <a href="Bienvenido.php">Inicio</a>
-        <a href="productos_lista.php">Productos</a>
-        <a href="promociones_lista.php">Promociones</a>
+        <a href="productos_lista.php">Tus productos</a>
+        <a href="">Eventos</a>
         <a href="cerrar_sesion.php">Cerrar Sesión</a>
     </nav>
 

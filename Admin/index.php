@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -71,46 +70,31 @@
 
     <script src="JS/jquery-3.3.1.min.js"></script>
     <script>
-        function VerificarCorreo(correo) {
-            return $.ajax({
-                type: "POST",
-                url: 'funciones/verificaCorreo.php',
-                data: { correo: correo },
-            });
-        }
-
-        function VerificarContrasena(pass) {
-            return $.ajax({
-                type: "POST",
-                url: 'funciones/valida.php',
-                data: { pass: pass },
-            });
-        }
-
         function VerificarUsuarioYContrasena() {
             var correo = document.getElementById('correo').value;
             var pass = document.getElementById('pass').value;
 
             if (correo && pass) {
-                VerificarCorreo(correo).done(function (resp) {
-                    console.log('Respuesta del servidor (verificación de correo):', resp);
+                $.ajax({
+                    type: "POST",
+                    url: 'funciones/valida.php',
+                    data: { email: correo, pass: pass }, // Cambia 'correo' a 'email' para que coincida con valida.php
+                    success: function(resp) {
+                        console.log('Respuesta del servidor:', resp);
 
-                    VerificarContrasena(pass).done(function (res) {
-                        console.log('Respuesta del servidor (verificación de contraseña):', res);
-
-                        if ((resp == res) && resp != 0) {
+                        if (resp == 1) {
                             window.location.href = 'Bienvenido.php';
                         } else {
-                            $('#mensaje').show().html('Datos no válidos');
-                            setTimeout(function () {
+                            $('#mensaje').show().html('Correo o contraseña incorrectos');
+                            setTimeout(function() {
                                 $('#mensaje').html('').hide();
                             }, 5000);
                         }
-                    });
+                    }
                 });
             } else {
                 $('#mensaje').show().html('Faltan datos por llenar');
-                setTimeout(function () {
+                setTimeout(function() {
                     $('#mensaje').html('').hide();
                 }, 5000);
             }

@@ -7,11 +7,11 @@ session_start();
 // Incluye el archivo de conexión (asegúrate de que conecta.php esté en la misma carpeta)
 include('conecta.php');
 
-// Verifica si se reciben los datos de contraseña
-if (isset($_POST['pass'])) {
+// Verifica si se reciben los datos de email y contraseña
+if (isset($_POST['email']) && isset($_POST['pass'])) {
+    $email = $_POST['email'];
     $pass = $_POST['pass'];
 
-    $passEnc = md5($pass);
 
     // Llama a la función de conexión
     $conexion = conecta();
@@ -22,23 +22,23 @@ if (isset($_POST['pass'])) {
     }
 
     // Utiliza sentencias preparadas para prevenir SQL injection
-    $query = "SELECT id, nombre FROM vendedor WHERE contraseña = ?";
+    $query = "SELECT id, nombre FROM vendedor WHERE email = ? AND contraseña = ?";
     $stmt = $conexion->prepare($query);
-    $stmt->bind_param("s", $pass);
+    $stmt->bind_param("ss", $email, $pass); // Bindea tanto el email como la contraseña encriptada
     $stmt->execute();
     $stmt->bind_result($id, $nombre);
     $stmt->fetch();
 
-    // Verifica si se encontró un usuario con esa contraseña
+    // Verifica si se encontró un usuario con el email y la contraseña correctos
     if ($id) {
         // Almacena el ID y el nombre en las variables de sesión
         $_SESSION['id'] = $id;
         $_SESSION['nombre'] = $nombre;
 
-        // Devuelve el ID como respuesta
-        echo $id;
+        // Devuelve 1 como respuesta de éxito
+        echo 1;
     } else {
-        echo 0; // No se encontró un usuario con esa contraseña
+        echo 0; // No se encontró un usuario con el email y la contraseña proporcionados
     }
 
     // Cierra la conexión y el statement
@@ -47,4 +47,3 @@ if (isset($_POST['pass'])) {
 } else {
     echo 0; // Datos no recibidos correctamente
 }
-?>

@@ -21,7 +21,7 @@ if ($row = $res->fetch_array()) {
     $descripcion = $row["descripcion"];
     $precio = $row["precio"];
     $archivo = $row["archivo"];
-    $archivo_path = "funciones/archivos/" . $archivo; // Construir la ruta completa
+    $archivo_path = "Admin/funciones/archivos/" . $archivo; // Construir la ruta completa
 } else {
     echo "No se encontró el producto especificado.";
     exit();
@@ -128,7 +128,7 @@ if ($row = $res->fetch_array()) {
 
 <body>
     <nav>
-        <a href="productos_lista.php">Regresar</a>
+        <a href="productos.php">Regresar</a>
     </nav>
     <table border="3" width="40%" height="150%" align="center">
         <tr>
@@ -155,7 +155,7 @@ if ($row = $res->fetch_array()) {
         </tr>
         <tr>
             <td align="center">
-                <a href="productos_lista.php">
+                <a href="productos.php">
                     <input class="Regresar" value="<= Regresar" type="button">
                 </a>
             </td>
