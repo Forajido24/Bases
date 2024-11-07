@@ -1,20 +1,13 @@
 <?php
 session_start();
 
-if (!isset($_SESSION['idUser'])) {
-    header("Location: login.php");
-    exit();
-}
-
-$nombreUsuario = isset($_SESSION['nombreUser']) ? $_SESSION['nombreUser'] : 'Usuario'; // Verifica si el nombre existe
+// Verificar si el usuario ha iniciado sesión
+$usuarioIniciado = isset($_SESSION['idUser']);
+$nombreUsuario = $usuarioIniciado ? $_SESSION['nombreUser'] : '';
 
 // Conexión a la base de datos
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "marketcucei";
-
-$conn = new mysqli($servername, $username, $password, $dbname);
+require_once 'funciones/conecta.php';
+$conn = conecta();
 
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
@@ -47,7 +40,18 @@ if ($res === false) {
             color: #ffffff;
             text-align: center;
             padding: 10px;
-           font-size: 24px;
+            font-size: 24px;
+            position: relative;
+        }
+        .login-option {
+            float: right;
+        }
+        .welcome-message {
+            position: absolute;
+            right: 10px;
+            top: 10px;
+            font-size: 16px;
+            color: #ffffff;
         }
         nav {
             background-color: #333;
@@ -67,9 +71,7 @@ if ($res === false) {
             background-color: #ddd;
             color: black;
         }
-        a {
-            font-size: 24px;
-        }
+        
         .grid-container {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
@@ -125,20 +127,27 @@ if ($res === false) {
     </style>
     <script>
         function redirigirDetalles(id) {
-            var url = 'detalle_producto.php?id=' + id; // Cambia a detalle_producto.php
+            var url = 'detalle_producto.php?id=' + id;
             window.location.href = url;
         }
     </script>
 </head>
 <body>
 <header>
-    <h1>Bienvenido <?php echo htmlspecialchars($nombreUsuario); ?></h1>
+    <h1>Listado de Productos</h1>
+    <?php if ($usuarioIniciado): ?>
+        <div class="welcome-message">Bienvenido, <?php echo htmlspecialchars($nombreUsuario); ?></div>
+    <?php endif; ?>
 </header>
 <nav>
     <a href="home.php">Inicio</a>
     <a href="productos.php">Productos</a>
-    <a href="">Promociones</a>
-    <a href="cerrar_sesion.php">Cerrar Sesión</a>
+    <a href="#">Promociones</a>
+    <?php if ($usuarioIniciado): ?>
+        <a href="cerrar_sesion.php" class="login-option">Cerrar Sesión</a>
+    <?php else: ?>
+        <a href="login.php" class="login-option">Iniciar Sesión</a>
+    <?php endif; ?>
 </nav>
 
 <div class="grid-container">

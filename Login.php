@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -33,12 +32,12 @@
         }
 
         .login-container h1 {
-            background-color: #00bcd4;
-            color: #fff;
-            padding: 10px;
-            border-radius: 4px;
+            background-color: #020621;
+            color: #ffffff;
+            padding: 15px;
+            border-radius: 5px;
+            font-size: 30px;
             margin-bottom: 1em;
-            font-size: 24px;
         }
 
         label {
@@ -57,42 +56,39 @@
         .input-group input {
             width: 100%;
             padding: 15px;
-            padding-left: 40px;
             border: 1px solid #ddd;
-            border-radius: 4px;
+            border-radius: 5px;
             background-color: #f5f5f5;
             font-size: 18px;
+            text-align: center;
+            color: #81888f;
         }
 
-        .input-group .icon {
-            position: absolute;
-            left: 10px;
-            top: 50%;
-            transform: translateY(-50%);
-            font-size: 18px;
-            color: #666;
+        .input-group input::placeholder {
+            color: #81888fb6;
         }
 
         .login-button {
             width: 100%;
             padding: 15px;
-            background-color: #00bcd4;
-            color: white;
+            background-color: #ff6600;
+            color: #ffffff;
             font-weight: bold;
             border: none;
-            border-radius: 4px;
-            font-size: 18px;
+            border-radius: 5px;
+            font-size: 24px;
             cursor: pointer;
             margin-top: 1em;
         }
 
         .login-button:hover {
-            background-color: #0097a7;
+            background-color: #e65500;
         }
 
         .signup-link {
             margin-top: 1em;
-            font-size: 16px;
+            font-size: 18px;
+            color: #007bff;
         }
 
         .signup-link a {
@@ -129,7 +125,7 @@
                 $.ajax({
                     type: "POST",
                     url: 'funciones/valida.php',
-                    data: { email: correo, pass: pass }, // Cambia 'correo' a 'email' para que coincida con valida.php
+                    data: { email: correo, pass: pass },
                     success: function(resp) {
                         console.log('Respuesta del servidor:', resp);
 
@@ -155,7 +151,7 @@
 
 <body>
     <div class="login-container">
-        <h1>Formulario de Inicio de Sesión</h1>
+        <h1>Inicia sesion para comprar</h1>
         <form id="forma01" method="post" action="#" onsubmit="return false;" enctype="multipart/form-data">
             <div class="input-group">
                 <input type="text" name="correo" id="correo" placeholder="Ingrese su correo">
@@ -165,11 +161,13 @@
             </div>
             <button type="button" class="login-button" onclick="VerificarUsuarioYContrasena()">Iniciar Sesión</button>
             <div class="signup-link">
-                <a href="home.php">Registrate</a>
+                <a href="home.php">Registrate</a></a>
+            </div>
+            <div class="signup-link">
+                <a href="Admin/index.php"><input type="button" value="Espacio para vendedores" style="background-color: #20cbba; color: #ffffff; font-size: 18px; padding: 10px; border: none; border-radius: 5px;"></a>
             </div>
             <div id="mensaje"></div>
         </form>
     </div>
 </body>
-
 </html>

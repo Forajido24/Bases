@@ -103,7 +103,7 @@ $nombreUsuario = $_SESSION['nombre'];
     <div style="text-align: center;">
         <h2>Bienvenido al sistema escoge tu opcion</h2>
         <!-- Agregar la imagen centrada -->
-        <img src="archivos/HOLA.jpeg" alt="Imagen de ejemplo" style="max-width: 100%; height: auto; margin-top: 20px;">
+        <img src="funciones/Fotos_Perfil/lagg24@.jpg" alt="Imagen de ejemplo" style="max-width: 100%; height: auto; margin-top: 20px;">
     </div>
 </body>
 
