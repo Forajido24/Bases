@@ -59,9 +59,15 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             $totalMonto += $row["precio"];
         }
         $reporteGenerado = true;
+
+        // Agregar mensaje de depuración
+        echo "Ventas encontradas: " . count($ventas) . "<br>";
+        var_dump($ventas);
+    } else {
+        // Agregar mensaje de depuración
+        echo "No se encontraron resultados para el rango de fechas proporcionado.<br>";
     }
 }
-
 ?>
 
 <!DOCTYPE html>
