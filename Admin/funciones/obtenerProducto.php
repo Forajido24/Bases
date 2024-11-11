@@ -2,31 +2,37 @@
 require "conecta.php";
 $con = conecta();
 
-// Recibe el ID del producto
-$productoID = $_POST['productoID'];
+if (isset($_POST['productoID'])) {
+    $productoID = $_POST['productoID'];
 
-// Realiza la consulta para obtener los datos del producto
-$sql = "SELECT nombre, codigo, descripcion, costo, stock
-        FROM productos 
-        WHERE id = '$productoID'";
+    // Agregar registro para depuración
+    error_log("ID del producto recibido: " . $productoID);
 
-$res = $con->query($sql);
+    // Ajustar la consulta según las columnas existentes en la base de datos
+    $sql = "SELECT nombre, descripcion, precio, archivo, baja, eliminado FROM productos WHERE id = ?";
+    $stmt = $con->prepare($sql);
 
-// Verifica si se encontró el producto
-if ($row = $res->fetch_array()) {
-    // Crea un array asociativo con los datos del producto
-    $datosProducto = array(
-        'nombre' => $row['nombre'],
-        'codigo' => $row['codigo'],
-        'descripcion' => $row['descripcion'],
-        'costo' => $row['costo'],
-        'stock' => $row['stock']
-    );
+    if (!$stmt) {
+        error_log("Error al preparar la consulta: " . $con->error);
+        echo json_encode(['error' => 'Error al preparar la consulta']);
+        exit;
+    }
 
-    // Devuelve los datos del producto en formato JSON
-    echo json_encode($datosProducto);
+    $stmt->bind_param("i", $productoID);
+    $stmt->execute();
+    $res = $stmt->get_result();
+
+    if ($row = $res->fetch_assoc()) {
+        header('Content-Type: application/json');
+        echo json_encode($row);
+    } else {
+        echo json_encode(['error' => 'Producto no encontrado']);
+    }
+
+    $stmt->close();
 } else {
-    // Puedes manejar la situación si no se encuentra el producto
-    echo "Producto no encontrado";
+    echo json_encode(['error' => 'ID del producto no proporcionado']);
 }
+
+$con->close();
 ?>
