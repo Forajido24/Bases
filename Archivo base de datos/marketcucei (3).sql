@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 11-11-2024 a las 15:33:13
+-- Tiempo de generación: 11-11-2024 a las 18:17:40
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -55,7 +55,22 @@ INSERT INTO `citas` (`id`, `fecha`, `id_vendedor`, `id_comprador`) VALUES
 (15, '2024-10-08', 15, 15),
 (16, '2024-10-09', 1, 2),
 (17, '2024-09-23', 1, 2),
-(18, '2024-10-13', 2, 4);
+(18, '2024-10-13', 2, 4),
+(19, '2024-10-08', 1, 2),
+(20, '2024-10-09', 2, 3),
+(21, '2024-10-10', 3, 4),
+(22, '2024-10-11', 4, 5),
+(23, '2024-10-12', 5, 6),
+(24, '2024-10-13', 6, 7),
+(25, '2024-10-14', 7, 8),
+(26, '2024-10-15', 8, 9),
+(27, '2024-10-16', 9, 10),
+(28, '2024-10-17', 10, 11),
+(29, '2024-10-18', 11, 12),
+(30, '2024-10-19', 12, 13),
+(31, '2024-10-20', 13, 14),
+(32, '2024-10-21', 14, 15),
+(33, '2024-10-22', 15, 1);
 
 -- --------------------------------------------------------
 
@@ -161,7 +176,22 @@ INSERT INTO `detallesventa` (`id`, `id_venta`, `id_producto`, `cantidad`, `preci
 (12, 11, 12, 1, 200.00),
 (13, 12, 13, 1, 600.00),
 (14, 13, 14, 1, 150.00),
-(15, 14, 15, 1, 15.00);
+(15, 14, 15, 1, 15.00),
+(16, 16, 1, 1, 120.00),
+(17, 17, 3, 1, 350.00),
+(18, 18, 4, 1, 220.00),
+(19, 19, 5, 1, 75.00),
+(20, 20, 6, 1, 180.00),
+(21, 21, 7, 1, 400.00),
+(22, 22, 8, 1, 150.00),
+(23, 23, 9, 1, 300.00),
+(24, 24, 10, 1, 500.00),
+(25, 25, 11, 1, 600.00),
+(26, 26, 12, 1, 250.00),
+(27, 27, 13, 1, 100.00),
+(28, 28, 14, 1, 450.00),
+(29, 29, 15, 1, 75.00),
+(30, 30, 1, 1, 200.00);
 
 -- --------------------------------------------------------
 
@@ -273,18 +303,18 @@ INSERT INTO `productos` (`id`, `nombre`, `descripcion`, `precio`, `id_vendedor`,
 (16, 'Tablet', '12 pulgadas', 2000.00, 3, 'tablet.jpg', 0, 1),
 (17, 'Poco f6 ', 'Telefono gamer a precio de gama media con snapdragon 8s gen 3', 7000.00, 2, 'poco f6.jpg', 0, 1),
 (20, 'Poco x3 pro', 'Snapdragon 860 256gb 8gb en ram, con pantalla a 120hz', 3000.00, 5, 'poco x3.jpg', 0, 0),
-(21, 'iphone', 'max 15\r\n', 10000.00, 3, 'iphone.jpg', 0, 0),
-(22, 'telefono', 'analogico', 1345.56, 3, 'nokia.jpg', 0, 0),
+(21, 'iphone', 'max 15\r\n', 10000.00, 3, 'iphone.jpg', 0, 1),
+(22, 'telefono', 'analogico', 1345.56, 3, 'nokia.jpg', 0, 1),
 (23, 'Ropa', 'Ropa vintage', 70.00, 1, 'ropa.jpg', 0, 0),
 (24, 'Flores', 'Rosa', 50.00, 2, 'flores.jpg', 0, 1),
-(25, 'ProductoRasca', 'Descripci?n del producto', 350.00, 2, 'rasca.jpg', 0, 0),
-(29, 'Redmi 14 Pro Plus', 'Telefono Inteligente Xiaomi', 7600.00, 3, 'redmi14.jpg', 0, 0),
+(25, 'ProductoRasca', 'Descripci?n del producto', 350.00, 2, 'rasca.jpg', 0, 1),
+(29, 'Redmi 14 Pro Plus', 'Telefono Inteligente Xiaomi', 7600.00, 3, 'redmi14.jpg', 0, 1),
 (30, 'Trufas', 'Trufas de oreo con philadelfia con cubierta para helado blanca', 10.00, 16, 'trufas.jpg', 0, 0),
 (31, 'Sillon', 'sientqte', 5.00, 3, 'Imagen3.png', 0, 1),
 (32, 'robot', '12 cm', 500.00, 1, 'qué-son-las-ciencias-de-la-Computación-Universidad-Sergio-Arboleda-Inteligencia-Artificial.jpg', 0, 0),
 (33, 'robot', '12 cm', 500.00, 1, 'qué-son-las-ciencias-de-la-Computación-Universidad-Sergio-Arboleda-Inteligencia-Artificial.jpg', 0, 0),
 (34, 'robot', 'hola', 50.00, 2, 'bee tts mos.jpg', 0, 0),
-(35, 'robot', 'hola', 25.00, 3, 'mouse.jpg', 0, 0),
+(35, 'robot', 'hola', 25.00, 3, 'mouse.jpg', 0, 1),
 (36, 'hola', 'hola', 25.00, 3, 'nokia.jpg', 0, 0),
 (37, 'hola', 'hola', 25.00, 3, 'auriculares.jpg', 0, 0),
 (38, 'robot', 'hola', 35.00, 3, 'poco x3.jpg', 0, 0),
@@ -298,13 +328,14 @@ INSERT INTO `productos` (`id`, `nombre`, `descripcion`, `precio`, `id_vendedor`,
 (46, 'robot', '45', 68.00, 3, 'archivos/ec508dc61674fb7474b3017979768575.jpg', 0, 0),
 (47, 'hola', 'fff', 78.00, 3, 'archivos/ec508dc61674fb7474b3017979768575.jpg', 0, 0),
 (48, 'robot', '3', 57.00, 3, 'archivos/ec508dc61674fb7474b3017979768575.jpg', 0, 0),
-(49, 'hola', '56', 78.00, 3, 'archivos/b752ba7894144a9a5395beb68b3e3a03.jpg', 0, 0),
+(49, 'hola', '56', 78.00, 3, 'archivos/b752ba7894144a9a5395beb68b3e3a03.jpg', 0, 1),
 (50, 'robot', 'g', 12.00, 3, 'archivos/ec508dc61674fb7474b3017979768575.jpg', 0, 0),
 (51, '7', '89', 90.00, 3, '../Admin/funciones/archivos/f079770fc5c90b04031ec7066e819296.jpg', 0, 0),
-(52, '4', '6', 67.00, 3, '../Admin/funciones/archivos/ec508dc61674fb7474b3017979768575.jpg', 0, 0),
+(52, '4', '6', 67.00, 3, '../Admin/funciones/archivos/ec508dc61674fb7474b3017979768575.jpg', 0, 1),
 (53, '8', '8', 500.00, 3, '../Admin/funciones/archivos/ec508dc61674fb7474b3017979768575.jpg', 0, 0),
 (54, 'hoola', 'holaaa', 500.00, 2, '../Admin/funciones/archivos/512cb3c5788ffab01304126308eaf3ad.jpg', 0, 0),
-(55, 'ggg', 'gggg', 4.00, 3, '../Admin/funciones/archivos/b752ba7894144a9a5395beb68b3e3a03.jpg', 0, 0);
+(55, 'ggg', 'gggg', 4.00, 3, '../Admin/funciones/archivos/b752ba7894144a9a5395beb68b3e3a03.jpg', 0, 1),
+(56, 'hola', 'holaaaa', 75.00, 3, '1769f54744832f2c2ca8103e91cfb96a.jpg', 0, 0);
 
 -- --------------------------------------------------------
 
@@ -377,7 +408,22 @@ INSERT INTO `ventas` (`id`, `fecha`, `total`, `id_vendedor`, `id_comprador`) VAL
 (12, '2024-10-04', 200.00, 12, 12),
 (13, '2024-10-05', 600.00, 13, 13),
 (14, '2024-10-06', 150.00, 14, 14),
-(15, '2024-10-07', 15.00, 15, 15);
+(15, '2024-10-07', 15.00, 15, 15),
+(16, '2024-10-08', 120.00, 1, 2),
+(17, '2024-10-09', 350.00, 2, 3),
+(18, '2024-10-10', 220.00, 3, 4),
+(19, '2024-10-11', 75.00, 4, 5),
+(20, '2024-10-12', 180.00, 5, 6),
+(21, '2024-10-13', 400.00, 6, 7),
+(22, '2024-10-14', 150.00, 7, 8),
+(23, '2024-10-15', 300.00, 8, 9),
+(24, '2024-10-16', 500.00, 9, 10),
+(25, '2024-10-17', 600.00, 10, 11),
+(26, '2024-10-18', 250.00, 11, 12),
+(27, '2024-10-19', 100.00, 12, 13),
+(28, '2024-10-20', 450.00, 13, 14),
+(29, '2024-10-21', 75.00, 14, 15),
+(30, '2024-10-22', 200.00, 15, 1);
 
 --
 -- Índices para tablas volcadas
@@ -457,7 +503,7 @@ ALTER TABLE `ventas`
 -- AUTO_INCREMENT de la tabla `citas`
 --
 ALTER TABLE `citas`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
 
 --
 -- AUTO_INCREMENT de la tabla `comprador`
@@ -475,7 +521,7 @@ ALTER TABLE `detallescita`
 -- AUTO_INCREMENT de la tabla `detallesventa`
 --
 ALTER TABLE `detallesventa`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 
 --
 -- AUTO_INCREMENT de la tabla `evento`
@@ -493,7 +539,7 @@ ALTER TABLE `listavendedores`
 -- AUTO_INCREMENT de la tabla `productos`
 --
 ALTER TABLE `productos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=56;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=57;
 
 --
 -- AUTO_INCREMENT de la tabla `vendedor`
@@ -505,7 +551,7 @@ ALTER TABLE `vendedor`
 -- AUTO_INCREMENT de la tabla `ventas`
 --
 ALTER TABLE `ventas`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 
 --
 -- Restricciones para tablas volcadas
