@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 10-11-2024 a las 22:52:37
+-- Tiempo de generación: 11-11-2024 a las 15:33:13
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -256,8 +256,8 @@ CREATE TABLE `productos` (
 
 INSERT INTO `productos` (`id`, `nombre`, `descripcion`, `precio`, `id_vendedor`, `archivo`, `baja`, `eliminado`) VALUES
 (1, 'Laptop', 'Laptop de alta gama', 1500.00, 1, 'ComputadoraPortatil.jpg', 0, 0),
-(2, 'Smartphone', 'Smartphone con gran cámara', 800.00, 2, 'redmi8.jpg', 0, 1),
-(3, 'Tablet', 'Tablet de 10 pulgadas', 300.00, 3, 'tabletrayo.jpg', 0, 1),
+(2, 'Smartphone', 'Smartphone con gran cámara', 900.00, 2, 'redmi8.jpg', 0, 1),
+(3, 'Tablet', 'Tablet de 10 pulgadas', 1000.00, 3, 'tabletrayo.jpg', 1, 1),
 (4, 'Monitor', 'Monitor 4K de 27 pulgadas', 500.00, 4, 'Monitor.jpg', 0, 1),
 (5, 'Teclado mecánico', 'Teclado mecánico retroiluminado', 100.00, 5, 'teclado.jpg', 0, 0),
 (6, 'Ratón', 'Ratón ergonómico', 40.00, 6, 'mouse.jpg', 0, 0),
@@ -270,7 +270,7 @@ INSERT INTO `productos` (`id`, `nombre`, `descripcion`, `precio`, `id_vendedor`,
 (13, 'Proyector', 'Proyector portátil', 600.00, 13, 'proyector.jpg', 0, 0),
 (14, 'SSD externo', 'Unidad de estado solido  SSD de un 1TB', 150.00, 14, 'ssd.jpg', 0, 0),
 (15, 'Cable HDMI', 'Cable HDMI de 2 metros', 15.00, 15, 'hdmi.jpg', 0, 0),
-(16, 'Tablet', '12 pulgadas', 2000.00, 3, 'tablet.jpg', 0, 0),
+(16, 'Tablet', '12 pulgadas', 2000.00, 3, 'tablet.jpg', 0, 1),
 (17, 'Poco f6 ', 'Telefono gamer a precio de gama media con snapdragon 8s gen 3', 7000.00, 2, 'poco f6.jpg', 0, 1),
 (20, 'Poco x3 pro', 'Snapdragon 860 256gb 8gb en ram, con pantalla a 120hz', 3000.00, 5, 'poco x3.jpg', 0, 0),
 (21, 'iphone', 'max 15\r\n', 10000.00, 3, 'iphone.jpg', 0, 0),
@@ -280,10 +280,31 @@ INSERT INTO `productos` (`id`, `nombre`, `descripcion`, `precio`, `id_vendedor`,
 (25, 'ProductoRasca', 'Descripci?n del producto', 350.00, 2, 'rasca.jpg', 0, 0),
 (29, 'Redmi 14 Pro Plus', 'Telefono Inteligente Xiaomi', 7600.00, 3, 'redmi14.jpg', 0, 0),
 (30, 'Trufas', 'Trufas de oreo con philadelfia con cubierta para helado blanca', 10.00, 16, 'trufas.jpg', 0, 0),
-(31, 'Sillon', 'sientqte', 5.00, 3, 'Imagen3.png', 0, 0),
+(31, 'Sillon', 'sientqte', 5.00, 3, 'Imagen3.png', 0, 1),
 (32, 'robot', '12 cm', 500.00, 1, 'qué-son-las-ciencias-de-la-Computación-Universidad-Sergio-Arboleda-Inteligencia-Artificial.jpg', 0, 0),
 (33, 'robot', '12 cm', 500.00, 1, 'qué-son-las-ciencias-de-la-Computación-Universidad-Sergio-Arboleda-Inteligencia-Artificial.jpg', 0, 0),
-(34, 'robot', 'hola', 50.00, 2, 'bee tts mos.jpg', 0, 0);
+(34, 'robot', 'hola', 50.00, 2, 'bee tts mos.jpg', 0, 0),
+(35, 'robot', 'hola', 25.00, 3, 'mouse.jpg', 0, 0),
+(36, 'hola', 'hola', 25.00, 3, 'nokia.jpg', 0, 0),
+(37, 'hola', 'hola', 25.00, 3, 'auriculares.jpg', 0, 0),
+(38, 'robot', 'hola', 35.00, 3, 'poco x3.jpg', 0, 0),
+(39, 'robot', 'hola', 45.00, 3, 'Monitor.jpg', 0, 1),
+(40, 'robot', 'g', 67.00, 3, 'archivos/ec508dc61674fb7474b3017979768575.jpg', 0, 0),
+(41, 'hola', 'hola', 78.00, 3, 'archivos/a86496757455c5778974fe32b389213a.jpg', 0, 0),
+(42, 'hola', 'hola', 78.00, 3, 'archivos/a86496757455c5778974fe32b389213a.jpg', 0, 0),
+(43, 'robot', '1', 34.00, 3, 'archivos/a86496757455c5778974fe32b389213a.jpg', 0, 0),
+(44, '1', '2', 34.00, 3, 'archivos/512cb3c5788ffab01304126308eaf3ad.jpg', 0, 0),
+(45, 'telefono', '50', 20.00, 3, 'archivos/b752ba7894144a9a5395beb68b3e3a03.jpg', 0, 0),
+(46, 'robot', '45', 68.00, 3, 'archivos/ec508dc61674fb7474b3017979768575.jpg', 0, 0),
+(47, 'hola', 'fff', 78.00, 3, 'archivos/ec508dc61674fb7474b3017979768575.jpg', 0, 0),
+(48, 'robot', '3', 57.00, 3, 'archivos/ec508dc61674fb7474b3017979768575.jpg', 0, 0),
+(49, 'hola', '56', 78.00, 3, 'archivos/b752ba7894144a9a5395beb68b3e3a03.jpg', 0, 0),
+(50, 'robot', 'g', 12.00, 3, 'archivos/ec508dc61674fb7474b3017979768575.jpg', 0, 0),
+(51, '7', '89', 90.00, 3, '../Admin/funciones/archivos/f079770fc5c90b04031ec7066e819296.jpg', 0, 0),
+(52, '4', '6', 67.00, 3, '../Admin/funciones/archivos/ec508dc61674fb7474b3017979768575.jpg', 0, 0),
+(53, '8', '8', 500.00, 3, '../Admin/funciones/archivos/ec508dc61674fb7474b3017979768575.jpg', 0, 0),
+(54, 'hoola', 'holaaa', 500.00, 2, '../Admin/funciones/archivos/512cb3c5788ffab01304126308eaf3ad.jpg', 0, 0),
+(55, 'ggg', 'gggg', 4.00, 3, '../Admin/funciones/archivos/b752ba7894144a9a5395beb68b3e3a03.jpg', 0, 0);
 
 -- --------------------------------------------------------
 
@@ -472,7 +493,7 @@ ALTER TABLE `listavendedores`
 -- AUTO_INCREMENT de la tabla `productos`
 --
 ALTER TABLE `productos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=56;
 
 --
 -- AUTO_INCREMENT de la tabla `vendedor`
