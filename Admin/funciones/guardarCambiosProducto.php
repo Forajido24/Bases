@@ -3,47 +3,40 @@ require "conecta.php";
 $con = conecta();
 
 // Recibe los datos del formulario
-$productoID = $_POST['productoID'];
-$nombre = $_POST['nombre'];
-$descripcion = $_POST['descripcion'];
-$precio = $_POST['precio'];
+if (isset($_POST['productoID'])) {
+    $productoID = $_POST['productoID'];
+    $nombre = $_POST['nombre'];
+    $descripcion = $_POST['descripcion'];
+    $precio = $_POST['precio'];
+    $baja = isset($_POST['baja']) ? (int) $_POST['baja'] : 0;
+    $eliminado = isset($_POST['eliminado']) ? (int) $_POST['eliminado'] : 0;
 
-// Verifica si se envió un archivo de imagen
-if(isset($_FILES['imagen']) && $_FILES['imagen']['error'] === UPLOAD_ERR_OK) {
-    // Define la carpeta donde se guardará la imagen
-    $carpeta_destino = 'ruta/donde/guardar/imagenes/';
+    // Verifica si se envió un archivo de imagen
+    if (isset($_FILES['imagen']) && $_FILES['imagen']['error'] === UPLOAD_ERR_OK) {
+        $carpeta_destino = 'funciones/archivos/'; // Asegúrate de que esta ruta exista
 
-    // Genera un nombre único para la imagen
-    $nombre_archivo = uniqid('imagen_', true) . '_' . $_FILES['imagen']['name'];
+        $nombre_archivo = uniqid('imagen_', true) . '_' . $_FILES['imagen']['name'];
 
-    // Construye la ruta completa del archivo de imagen
-    $ruta_imagen = $carpeta_destino . $nombre_archivo;
+        $ruta_imagen = $carpeta_destino . $nombre_archivo;
 
-    // Mueve el archivo de la ubicación temporal a la carpeta de destino
-    move_uploaded_file($_FILES['imagen']['tmp_name'], $ruta_imagen);
+        move_uploaded_file($_FILES['imagen']['tmp_name'], $ruta_imagen);
 
-    // Agrega la ruta de la imagen a la consulta SQL
-    $sql = "UPDATE productos
-            SET nombre = '$nombre',
-                codigo = '$codigo',
-                descripcion = '$descripcion',
-                precio = '$precio',
-                ruta_imagen = '$ruta_imagen'
-            WHERE id = '$productoID'";
+        $sql = "UPDATE productos SET nombre = ?, descripcion = ?, precio = ?, archivo = ?, baja = ?, eliminado = ? WHERE id = ?";
+        $stmt = $con->prepare($sql);
+        $stmt->bind_param("ssdsiii", $nombre, $descripcion, $precio, $ruta_imagen, $baja, $eliminado, $productoID);
+    } else {
+        $sql = "UPDATE productos SET nombre = ?, descripcion = ?, precio = ?, baja = ?, eliminado = ? WHERE id = ?";
+        $stmt = $con->prepare($sql);
+        $stmt->bind_param("ssdsii", $nombre, $descripcion, $precio, $baja, $eliminado, $productoID);
+    }
+
+    $stmt->execute();
+
+    echo "Cambios guardados exitosamente";
+
+    $stmt->close();
 } else {
-    // Si no se envió una nueva imagen, actualiza solo los otros campos
-    $sql = "UPDATE productos
-            SET nombre = '$nombre',
-                codigo = '$codigo',
-                descripcion = '$descripcion',
-                precio = '$precio',
-                stock = '$stock'
-            WHERE id = '$productoID'";
+    echo "ID del producto no proporcionado";
 }
 
-$res = $con->query($sql);
-
-// Puedes agregar manejo de errores y enviar respuestas personalizadas según sea necesario
-
-echo "Cambios guardados exitosamente";
-?>
+$con->close();

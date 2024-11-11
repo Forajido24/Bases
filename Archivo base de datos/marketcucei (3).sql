@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 07-11-2024 a las 16:57:48
+-- Tiempo de generación: 10-11-2024 a las 22:52:37
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -246,40 +246,44 @@ CREATE TABLE `productos` (
   `precio` decimal(10,2) NOT NULL,
   `id_vendedor` int(11) DEFAULT NULL,
   `archivo` varchar(255) DEFAULT NULL,
-  `baja` int(11) DEFAULT 0
+  `baja` int(11) DEFAULT 0,
+  `eliminado` tinyint(1) DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `productos`
 --
 
-INSERT INTO `productos` (`id`, `nombre`, `descripcion`, `precio`, `id_vendedor`, `archivo`, `baja`) VALUES
-(1, 'Laptop', 'Laptop de alta gama', 1500.00, 1, 'ComputadoraPortatil.jpg', 0),
-(2, 'Smartphone', 'Smartphone con gran cámara', 800.00, 2, 'redmi8.jpg', 0),
-(3, 'Tablet', 'Tablet de 10 pulgadas', 300.00, 3, 'tabletrayo.jpg', 0),
-(4, 'Monitor', 'Monitor 4K de 27 pulgadas', 500.00, 4, 'Monitor.jpg', 0),
-(5, 'Teclado mecánico', 'Teclado mecánico retroiluminado', 100.00, 5, 'teclado.jpg', 0),
-(6, 'Ratón', 'Ratón ergonómico', 40.00, 6, 'mouse.jpg', 0),
-(7, 'Auriculares', 'Auriculares inalámbricos', 150.00, 7, 'auriculares.jpg', 0),
-(8, 'Cámara web', 'Cámara web HD', 80.00, 8, 'Camara web.jpg', 0),
-(9, 'Altavoces', 'Altavoces bluetooth', 120.00, 9, 'altavoces.jpg', 0),
-(10, 'Smartwatch', 'Reloj inteligente', 250.00, 10, 'smart.jpg', 0),
-(11, 'Consola de videojuegos', 'Consola de última generación', 9000.00, 11, 'xbox.jpg', 0),
-(12, 'Impresora', 'Impresora a color', 200.00, 12, 'impresora.jpg', 0),
-(13, 'Proyector', 'Proyector portátil', 600.00, 13, 'proyector.jpg', 0),
-(14, 'SSD externo', 'Unidad de estado solido  SSD de un 1TB', 150.00, 14, 'ssd.jpg', 0),
-(15, 'Cable HDMI', 'Cable HDMI de 2 metros', 15.00, 15, 'hdmi.jpg', 0),
-(16, 'Tablet', '12 pulgadas', 2000.00, 3, 'tablet.jpg', 0),
-(17, 'Poco f6 ', 'Telefono gamer a precio de gama media con snapdragon 8s gen 3', 7000.00, 2, 'poco f6.jpg', 0),
-(20, 'Poco x3 pro', 'Snapdragon 860 256gb 8gb en ram, con pantalla a 120hz', 3000.00, 5, 'poco x3.jpg', 0),
-(21, 'iphone', 'max 15\r\n', 10000.00, 3, 'iphone.jpg', 0),
-(22, 'telefono', 'analogico', 1345.56, 3, 'nokia.jpg', 0),
-(23, 'Ropa', 'Ropa vintage', 70.00, 1, 'ropa.jpg', 0),
-(24, 'Flores', 'Rosa', 50.00, 2, 'flores.jpg', 0),
-(25, 'ProductoRasca', 'Descripci?n del producto', 350.00, 2, 'rasca.jpg', 0),
-(29, 'Redmi 14 Pro Plus', 'Telefono Inteligente Xiaomi', 7600.00, 3, 'redmi14.jpg', 0),
-(30, 'Trufas', 'Trufas de oreo con philadelfia con cubierta para helado blanca', 10.00, 16, 'trufas.jpg', 0),
-(31, 'Sillon', 'sientqte', 5.00, 3, 'Imagen3.png', 0);
+INSERT INTO `productos` (`id`, `nombre`, `descripcion`, `precio`, `id_vendedor`, `archivo`, `baja`, `eliminado`) VALUES
+(1, 'Laptop', 'Laptop de alta gama', 1500.00, 1, 'ComputadoraPortatil.jpg', 0, 0),
+(2, 'Smartphone', 'Smartphone con gran cámara', 800.00, 2, 'redmi8.jpg', 0, 1),
+(3, 'Tablet', 'Tablet de 10 pulgadas', 300.00, 3, 'tabletrayo.jpg', 0, 1),
+(4, 'Monitor', 'Monitor 4K de 27 pulgadas', 500.00, 4, 'Monitor.jpg', 0, 1),
+(5, 'Teclado mecánico', 'Teclado mecánico retroiluminado', 100.00, 5, 'teclado.jpg', 0, 0),
+(6, 'Ratón', 'Ratón ergonómico', 40.00, 6, 'mouse.jpg', 0, 0),
+(7, 'Auriculares', 'Auriculares inalámbricos', 150.00, 7, 'auriculares.jpg', 0, 0),
+(8, 'Cámara web', 'Cámara web HD', 80.00, 8, 'Camara web.jpg', 0, 0),
+(9, 'Altavoces', 'Altavoces bluetooth', 120.00, 9, 'altavoces.jpg', 0, 0),
+(10, 'Smartwatch', 'Reloj inteligente', 250.00, 10, 'smart.jpg', 0, 0),
+(11, 'Consola de videojuegos', 'Consola de última generación', 9000.00, 11, 'xbox.jpg', 0, 0),
+(12, 'Impresora', 'Impresora a color', 200.00, 12, 'impresora.jpg', 0, 0),
+(13, 'Proyector', 'Proyector portátil', 600.00, 13, 'proyector.jpg', 0, 0),
+(14, 'SSD externo', 'Unidad de estado solido  SSD de un 1TB', 150.00, 14, 'ssd.jpg', 0, 0),
+(15, 'Cable HDMI', 'Cable HDMI de 2 metros', 15.00, 15, 'hdmi.jpg', 0, 0),
+(16, 'Tablet', '12 pulgadas', 2000.00, 3, 'tablet.jpg', 0, 0),
+(17, 'Poco f6 ', 'Telefono gamer a precio de gama media con snapdragon 8s gen 3', 7000.00, 2, 'poco f6.jpg', 0, 1),
+(20, 'Poco x3 pro', 'Snapdragon 860 256gb 8gb en ram, con pantalla a 120hz', 3000.00, 5, 'poco x3.jpg', 0, 0),
+(21, 'iphone', 'max 15\r\n', 10000.00, 3, 'iphone.jpg', 0, 0),
+(22, 'telefono', 'analogico', 1345.56, 3, 'nokia.jpg', 0, 0),
+(23, 'Ropa', 'Ropa vintage', 70.00, 1, 'ropa.jpg', 0, 0),
+(24, 'Flores', 'Rosa', 50.00, 2, 'flores.jpg', 0, 1),
+(25, 'ProductoRasca', 'Descripci?n del producto', 350.00, 2, 'rasca.jpg', 0, 0),
+(29, 'Redmi 14 Pro Plus', 'Telefono Inteligente Xiaomi', 7600.00, 3, 'redmi14.jpg', 0, 0),
+(30, 'Trufas', 'Trufas de oreo con philadelfia con cubierta para helado blanca', 10.00, 16, 'trufas.jpg', 0, 0),
+(31, 'Sillon', 'sientqte', 5.00, 3, 'Imagen3.png', 0, 0),
+(32, 'robot', '12 cm', 500.00, 1, 'qué-son-las-ciencias-de-la-Computación-Universidad-Sergio-Arboleda-Inteligencia-Artificial.jpg', 0, 0),
+(33, 'robot', '12 cm', 500.00, 1, 'qué-son-las-ciencias-de-la-Computación-Universidad-Sergio-Arboleda-Inteligencia-Artificial.jpg', 0, 0),
+(34, 'robot', 'hola', 50.00, 2, 'bee tts mos.jpg', 0, 0);
 
 -- --------------------------------------------------------
 
@@ -468,7 +472,7 @@ ALTER TABLE `listavendedores`
 -- AUTO_INCREMENT de la tabla `productos`
 --
 ALTER TABLE `productos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
 
 --
 -- AUTO_INCREMENT de la tabla `vendedor`
